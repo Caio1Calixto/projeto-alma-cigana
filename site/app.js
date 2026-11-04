@@ -27,7 +27,7 @@ function renderCategories() {
   categories.innerHTML = categorias.map(c => `<button class="category-card" data-category="${escapeHTML(c.id)}"><span class="category-icon">✧</span><h3>${escapeHTML(c.nome)}</h3><p>Explorar peças ↗</p></button>`).join('');
 }
 function renderProducts() {
-  filters.innerHTML = categorias.length ? `<button class="filter ${selected === '' ? 'active' : ''}" data-filter="">Todos</button>` + categorias.map(c => `<button class="filter ${selected === c.id ? 'active' : ''}" data-filter="${escapeHTML(c.id)}">${escapeHTML(c.nome)}</button>`).join('') : '';
+  filters.innerHTML = categorias.length ? `<button class="filter ${selected === '' ? 'active' : ''}" aria-pressed="${selected === ''}" data-filter="">Todos</button>` + categorias.map(c => `<button class="filter ${selected === c.id ? 'active' : ''}" aria-pressed="${selected === c.id}" data-filter="${escapeHTML(c.id)}">${escapeHTML(c.nome)}</button>`).join('') : '';
   const available = produtos.slice(0, 15).filter(p => !selected || p.categoriaId === selected);
   if (!produtos.length) {
     list.innerHTML = [1,2,3,4].map(n => `<article class="product-card"><div class="product-image placeholder-logo"><img src="assets/logo-alma-cigana.jpg" alt="Logotipo Alma Cigana" loading="lazy"></div><p class="product-meta">Produto provisório</p><h3>[Nome do produto]</h3><p class="product-price">[Preço a informar]</p></article>`).join('');
@@ -35,7 +35,7 @@ function renderProducts() {
     return;
   }
   list.innerHTML = available.map(p => `<article class="product-card"><div class="product-image">${p.imagem ? `<img src="${escapeHTML(p.imagem)}" alt="${escapeHTML(p.nome)}" loading="lazy">` : '<div class="no-image placeholder-logo"><img src="assets/logo-alma-cigana.jpg" alt="Logotipo Alma Cigana — fotografia do produto pendente"></div>'}</div><p class="product-meta">${escapeHTML(categorias.find(c => c.id === p.categoriaId)?.nome || 'Categoria a definir')}</p><h3>${escapeHTML(p.nome)}</h3><p class="product-price">${escapeHTML(p.preco || 'Valor sob consulta')}</p>${p.descricao ? `<p>${escapeHTML(p.descricao)}</p>` : ''}${p.caracteristicas ? `<p>${escapeHTML(p.caracteristicas)}</p>` : ''}<a class="text-link" href="https://www.instagram.com/almacigana.produtos/" target="_blank" rel="noopener noreferrer">Consultar pelo Instagram ↗</a></article>`).join('');
-  status.textContent = available.length ? '' : 'Nenhum produto cadastrado nesta categoria.';
+  status.textContent = available.length ? (selected ? '' : 'A classificação dos produtos por categoria está em atualização.') : 'Nenhum produto associado a esta categoria por enquanto. A classificação está em atualização.';
 }
 categories.addEventListener('click', e => { const button = e.target.closest('[data-category]'); if (!button) return; selected = button.dataset.category; renderProducts(); document.querySelector('#catalogo').scrollIntoView(); });
 filters.addEventListener('click', e => { const button = e.target.closest('[data-filter]'); if (!button) return; selected = button.dataset.filter; renderProducts(); });

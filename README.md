@@ -3,7 +3,6 @@
 **Etapa:** Ciclo 0 — Planejamento e prototipação (pré-desenvolvimento)
 **Documento de origem:** Painel Mestre do Projeto, v2.0 (02/11/2026)
 **Data deste pacote:** 03/11/2026
-**Responsável pela etapa:** Agente 01 — Planejamento e Prototipação
 
 ---
 

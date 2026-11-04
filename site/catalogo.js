@@ -1,7 +1,14 @@
 // Produtos apresentados nas imagens e legendas fornecidas pelo cliente.
-// Categorias e preços aguardam confirmação; limite contratado: 15 produtos.
+// Categorias fornecidas pela loja; associação dos produtos e preços ainda pendentes. Limite: 15 produtos.
 window.ALMA_CATALOGO = {
-  categorias: [],
+  categorias: [
+    { id:'semijoias', nome:'Semijoias' },
+    { id:'inoxidavel', nome:'Inoxidável' },
+    { id:'banhos', nome:'Banhos' },
+    { id:'aromas', nome:'Aromas' },
+    { id:'cosmeticos', nome:'Cosméticos' },
+    { id:'kits', nome:'Kits' }
+  ],
   produtos: [
     { id:'rosa-dourada', nome:'Colar Rosa Dourada', imagem:'assets/produtos/colar-rosa.jpg', descricao:'A delicadeza de uma rosa transformada em joia. Com seu acabamento dourado e desenho delicado, este colar traz elegância e personalidade para qualquer ocasião.' },
     { id:'forca-cigana', nome:'Bracelete Força Cigana', imagem:'assets/produtos/bracelete-forca.jpg', descricao:'Uma peça marcante, rica em detalhes e cheia de personalidade. Seu dourado e seus desenhos delicados remetem à beleza, à tradição e à força da estética cigana.' },
